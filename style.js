@@ -15,47 +15,35 @@ function computerPlay() {
 
 // function that will play RPS (only 1 round)
 function game(){
-    let playerSelection = prompt("Rock, paper, or scissors? ","");
-    alert(`Player selected ${playerSelection}`);
+// set player and computer parameters 
+    let playerSelection = prompt("Rock, paper, or scissors? ","").toUpperCase();
     let computerSelection = computerPlay();
-    alert(`Computer selected ${computerSelection}`);
-
-    if (playerSelection == "Rock") {
+// compare player pick to computer pick 
+    if (playerSelection == "ROCK") { 
         if (computerSelection == "Paper"){
-            console.log("Computer Wins");
+            console.log("Computer Wins, Paper beats Rock");
         } else if (computerSelection == "Scissors"){
-            console.log("Player Wins");
+            console.log("Player Wins, Rock beats Scissors");
         } else { 
-            console.log("It's a tie, try again");
+            console.log("It's a tie, both picked Rock");
         }
-    } else if (playerSelection == "Paper") {
+    } else if (playerSelection == "PAPER") {
         if (computerSelection == "Paper"){
-            console.log("It's a tie, try again");
+            console.log("It's a tie, both picked Paper");
         } else if (computerSelection == "Scissors"){
-            console.log("Computer Wins");
+            console.log("Computer Wins, Scissors beats Paper");
         } else { 
-            console.log("Player Wins");
+            console.log("Player Wins, Paper beats Rock");
         }
-    } else {
+    } else if (playerSelection == "SCISSORS"){ 
         if (computerSelection == "Paper"){
-            console.log("Player Wins");
+            console.log("Player Wins, Scissors beats Paper");
         } else if (computerSelection == "Scissors"){
-            console.log("It's a tie, try again");
+            console.log("It's a tie, both picked Scissors");
         } else { 
-            console.log("Computer Wins");
+            console.log("Computer Wins, Rock beats Scissors");
         }
+    } else { // player didnt pick from the
+        console.log("Try again")
     }
-// if player is equal to paper comp scissors
-// output comp wins
-// if comp is rocl 
-// output player wins
-// if comp paper
-// output try again
-
-// if player picks scissors comp rock
-// output comp wins
-// comp picks paper
-// player wins
-// same input
-// output try again
 }
