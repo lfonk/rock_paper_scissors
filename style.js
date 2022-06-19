@@ -14,36 +14,41 @@ function computerPlay() {
 }
 
 // function that will play RPS (only 1 round)
-function game(){
+function playRound(playerSelection, computerSelection){
 // set player and computer parameters 
-    let playerSelection = prompt("Rock, paper, or scissors? ","").toUpperCase();
-    let computerSelection = computerPlay();
+    //let playerSelection = prompt("Rock, paper, or scissors? ","").toUpperCase();
+   // let computerSelection = computerPlay();
 // compare player pick to computer pick 
-    if (playerSelection == "ROCK") { 
+    playerSelection.toLowerCase();
+    if (playerSelection == "rock") { 
         if (computerSelection == "Paper"){
-            console.log("Computer Wins, Paper beats Rock");
+            return "Computer Wins, Paper beats Rock";
         } else if (computerSelection == "Scissors"){
-            console.log("Player Wins, Rock beats Scissors");
+            return "Player Wins, Rock beats Scissors";
         } else { 
-            console.log("It's a tie, both picked Rock");
+            return "It's a tie, both picked Rock";
         }
-    } else if (playerSelection == "PAPER") {
+    } else if (playerSelection == "paper") {
         if (computerSelection == "Paper"){
-            console.log("It's a tie, both picked Paper");
+            return "It's a tie, both picked Paper";
         } else if (computerSelection == "Scissors"){
-            console.log("Computer Wins, Scissors beats Paper");
+            return "Computer Wins, Scissors beats Paper";
         } else { 
-            console.log("Player Wins, Paper beats Rock");
+            return "Player Wins, Paper beats Rock";
         }
-    } else if (playerSelection == "SCISSORS"){ 
+    } else if (playerSelection == "scissors"){ 
         if (computerSelection == "Paper"){
-            console.log("Player Wins, Scissors beats Paper");
+            return "Player Wins, Scissors beats Paper";
         } else if (computerSelection == "Scissors"){
-            console.log("It's a tie, both picked Scissors");
+            return "It's a tie, both picked Scissors";
         } else { 
-            console.log("Computer Wins, Rock beats Scissors");
+            return "Computer Wins, Rock beats Scissors";
         }
     } else { // player didnt pick from the
-        console.log("Try again")
+        return "Try again";
     }
 }
+
+const playerSelection = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
