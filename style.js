@@ -19,14 +19,7 @@ function computerPlay() {
     //Set RPS as numbers three numerical numbers 
     let pick = Math.floor(Math.random()*3)
     // output rock if zero
-    if (pick == 0){
-        return "Paper"
-
-    } else if (pick == 1) { //output paper if 1
-        return "Rock"
-    } else {
-        return "Scissors" // output scissors if 2
-    }
+    return (pick == 0) ?  "Paper" : (pick == 1) ? "Rock" : "Scissors"; 
 }
 
 // function that will play RPS (only 1 round)
@@ -64,11 +57,20 @@ function playRound(playerSelection, computerSelection){
 
 function winner() {
     if (computerPoint == 5 || playerPoint == 5) {
+        
         if (playerPoint > computerPoint) {
+            computerPoint = 0;
+            playerPoint = 0; 
+            round = 1;
             return ("You Win! Congratulations")
+            
         } else {
+            computerPoint = 0;
+            playerPoint = 0; 
+            round = 1;
             return ("You lose, Try Again?")
         }
+        
     } else {
         return ""
     }
