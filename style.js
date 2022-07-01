@@ -10,6 +10,9 @@ const scissors = document.getElementById('scissors')
 scissors.addEventListener('click', function() {
     game("scissors")
 });
+let computerPoint = 0;
+let playerPoint = 0;
+let round = 1 
 
 //creating a function that will output R, P or S
 function computerPlay() { 
@@ -59,24 +62,21 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-let computerPoint = 0;
-let playerPoint = 0;
-let round = 1 
-function game(playerSelection) {
-    
-    if (computerPoint == 5 || playerPoint == 5){
+function winner() {
+    if (computerPoint == 5 || playerPoint == 5) {
         if (playerPoint > computerPoint) {
-            console.log("You Win! Congratulations")
+            return ("You Win! Congratulations")
         } else {
-            console.log("You lose, Try Again?")
+            return ("You lose, Try Again?")
         }
     } else {
-        let computerSelection = computerPlay(); 
+        return ""
+    }
+}
+function game(playerSelection) {
+    let computerSelection = computerPlay(); 
         let result = playRound(playerSelection, computerSelection);
-        // set player and computer scores
-        // display round number
         console.log(`Round ${round}`)
-        // checks winner
         if (result == "computer"){
             console.log(`Computer wins, ${computerSelection} beats ${playerSelection}`);
             computerPoint++;
@@ -94,5 +94,5 @@ function game(playerSelection) {
         }
             // output player and computer score
         console.log(`Player-${playerPoint} Computer-${computerPoint}`);
-    }
+        console.log(winner())
 }    
