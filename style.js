@@ -1,23 +1,31 @@
+const rock = document.getElementById('rock')
+rock.addEventListener('click', function() {
+    game("rock")
+});
+const paper = document.getElementById('paper')
+paper.addEventListener('click', function() {
+    game("paper")
+});
+const scissors = document.getElementById('scissors')
+scissors.addEventListener('click', function() {
+    game("scissors")
+});
+let computerPoint = 0;
+let playerPoint = 0;
+let round = 1 
+
 //creating a function that will output R, P or S
 function computerPlay() { 
     //Set RPS as numbers three numerical numbers 
     let pick = Math.floor(Math.random()*3)
     // output rock if zero
-    if (pick == 0){
-        return "Paper"
-
-    } else if (pick == 1) { //output paper if 1
-        return "Rock"
-    } else {
-        return "Scissors" // output scissors if 2
-    }
+    return (pick == 0) ?  "Paper" : (pick == 1) ? "Rock" : "Scissors"; 
 }
 
 // function that will play RPS (only 1 round)
 function playRound(playerSelection, computerSelection){
 // set player and computer parameters 
 // compare player pick to computer pick 
-    playerSelection.toLowerCase();
     if (playerSelection == "rock") { 
         if (computerSelection == "Paper"){
             return "computer";
@@ -46,41 +54,47 @@ function playRound(playerSelection, computerSelection){
         return "error";
     }
 }
-//main game loop
-function game() {
-    let computerPoint = 0;
-    let playerPoint = 0; 
-    // loops 5 times
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock, Paper, or Scissors? ", "").toLowerCase(); // prompt user to pick RPS
-        // set player and computer parameters
-        let computerSelection = computerPlay(); 
+
+function winner() {
+    if (computerPoint == 5 || playerPoint == 5) {
+        
+        if (playerPoint > computerPoint) {
+            computerPoint = 0;
+            playerPoint = 0; 
+            round = 1;
+            return ("You Win! Congratulations")
+            
+        } else {
+            computerPoint = 0;
+            playerPoint = 0; 
+            round = 1;
+            return ("You lose, Try Again?")
+        }
+        
+    } else {
+        return ""
+    }
+}
+function game(playerSelection) {
+    let computerSelection = computerPlay(); 
         let result = playRound(playerSelection, computerSelection);
-        // set player and computer scores
-        // display round number
-        console.log(`Round ${i+1}`)
-        // checks winner
+        console.log(`Round ${round}`)
         if (result == "computer"){
             console.log(`Computer wins, ${computerSelection} beats ${playerSelection}`);
-            computerPoint++; // adds a point to computer
+            computerPoint++;
+            round++; // adds a point to computer
         } else if (result == "player") {
             console.log(`Player wins, ${playerSelection} beats ${computerSelection}`);
             playerPoint++; // adds a point to player
+            round++;
         } else if (result == 'tie'){
             console.log(`It's a tie, both picked ${playerSelection}`);
-            i -= 1; // repeats round
+            //i -= 1; // repeats round
         } else { 
             console.log("Try again")
-            i -= 1; // repeats round 
+            //i -= 1; // repeats round 
         }
-        // output player and computer score
+            // output player and computer score
         console.log(`Player-${playerPoint} Computer-${computerPoint}`);
-    } 
-    if (playerPoint > computerPoint) {
-        console.log("You Win! Congratulations")
-    } else {
-        console.log("You lose, Try Again?")
-    }
-}
-// call game loop
-console.log(game())
+        console.log(winner())
+}    
