@@ -1,0 +1,36 @@
+.buttonC {
+    display: flex;
+    gap: 32px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family:monospace;
+}
+
+button {
+    padding: 32px;
+    font-family:monospace;
+}
+
+#roundT, #text, .vs {
+    margin: 0;
+    padding: 0;
+}
+
+.player, .computer {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.topContainer {
+    display: flex;
+    gap: 32px;
+    margin: 32px;
+    align-items: center;
+}
