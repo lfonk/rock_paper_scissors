@@ -1,15 +1,25 @@
-const rock = document.getElementById('rock')
-rock.addEventListener('click', function() {
-    game("rock")
-});
-const paper = document.getElementById('paper')
-paper.addEventListener('click', function() {
-    game("paper")
-});
-const scissors = document.getElementById('scissors')
-scissors.addEventListener('click', function() {
-    game("scissors")
-});
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    game(button.id);
+  });
+}); //iterates each button
+
+const div = document.createElement("div")
+document.body.appendChild(div)
+
+const scoreT = document.createElement("h2")
+div.appendChild(scoreT)
+
+const roundT = document.createElement("h3")
+div.appendChild(roundT)
+
+const text = document.createElement("p")
+div.appendChild(text)
+
+const winnerT = document.createElement("h3")
+div.appendChild(winnerT)
+
 let computerPoint = 0;
 let playerPoint = 0;
 let round = 1 
@@ -78,23 +88,23 @@ function winner() {
 function game(playerSelection) {
     let computerSelection = computerPlay(); 
         let result = playRound(playerSelection, computerSelection);
-        console.log(`Round ${round}`)
+        roundT.textContent = `Round ${round}`
         if (result == "computer"){
-            console.log(`Computer wins, ${computerSelection} beats ${playerSelection}`);
+            text.textContent = `Computer wins, ${computerSelection} beats ${playerSelection}`;
             computerPoint++;
             round++; // adds a point to computer
         } else if (result == "player") {
-            console.log(`Player wins, ${playerSelection} beats ${computerSelection}`);
+            text.textContent = `Player wins, ${playerSelection} beats ${computerSelection}`;
             playerPoint++; // adds a point to player
             round++;
         } else if (result == 'tie'){
-            console.log(`It's a tie, both picked ${playerSelection}`);
+            text.textContent =`It's a tie, both picked ${playerSelection}`;
             //i -= 1; // repeats round
         } else { 
             console.log("Try again")
             //i -= 1; // repeats round 
         }
             // output player and computer score
-        console.log(`Player-${playerPoint} Computer-${computerPoint}`);
-        console.log(winner())
+        scoreT.textContent = `Player-${playerPoint} Computer-${computerPoint}`;
+        winnerT.textContent = winner();
 }    
