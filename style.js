@@ -5,20 +5,18 @@ buttons.forEach((button) => {
   });
 }); //iterates each button
 
-const div = document.createElement("div")
-document.body.appendChild(div)
+const scoreT = document.getElementById('scoreT')
+const roundT = document.getElementById('roundT')
+const text = document.getElementById('text')
+const winnerT = document.getElementById('winnerT')
 
-const scoreT = document.createElement("h2")
-div.appendChild(scoreT)
+//const rock = document.createElement("img");
+//rock.addEventListener('click', ()=> {
+//    rock.setAttribute("src", )
+//})
+//const paper = document.createElement("img");
+//const scissors = document.createElement("img");
 
-const roundT = document.createElement("h3")
-div.appendChild(roundT)
-
-const text = document.createElement("p")
-div.appendChild(text)
-
-const winnerT = document.createElement("h3")
-div.appendChild(winnerT)
 
 let computerPoint = 0;
 let playerPoint = 0;
