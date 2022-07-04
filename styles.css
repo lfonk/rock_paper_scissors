@@ -3,7 +3,7 @@
     gap: 32px;
 }
 
-#container {
+#container, .con {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,11 +21,9 @@ button {
     padding: 0;
 }
 
-.player, .computer {
+.playerC, .computerC {
     width: 200px;
     height: 200px;
-    border: 2px solid black;
-    border-radius: 10px;
 }
 
 .topContainer {
@@ -33,4 +31,12 @@ button {
     gap: 32px;
     margin: 32px;
     align-items: center;
+    justify-content: center;
+
 }
+
+#rockP, #paperP, #scissorsP, #rockC, #paperC, #scissorsC, .playerC, .computerC {
+    width: 200px;
+    height: 200px;
+}
+
